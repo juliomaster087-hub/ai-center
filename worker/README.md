@@ -6,7 +6,7 @@ Este Worker fornece o endpoint `POST /api/chat` usado pelo frontend.
 1. Instale Node.js e npm.
 2. Na pasta do projeto, execute `npm install`.
 3. Faça login com `npx wrangler login`.
-4. Configure o binding Workers AI no `wrangler.toml` (já declarado).
+4. Configure o binding Workers AI no `wrangler.jsonc` (já declarado).
 5. Publique com `npx wrangler deploy`.
 6. Copie a URL `workers.dev` gerada e configure `VITE_API_URL` no build do frontend.
 
