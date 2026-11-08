@@ -4,8 +4,8 @@ Plataforma pública de ferramentas de inteligência artificial. Projeto em desen
 
 ## Stack
 - React + TypeScript + Vite
-- Cloudflare Workers AI (backend planejado)
-- Cloudflare Pages (hospedagem planejada)
+- Cloudflare Workers AI (API `ai-center-api` implantada)
+- Cloudflare Pages (projeto `ai-center` conectado ao GitHub)
 
 ## Publicar o site (Cloudflare Pages)
 1. No painel Cloudflare, abra **Workers & Pages** e crie um projeto Pages conectado ao repositório GitHub.
@@ -34,6 +34,13 @@ VITE_API_URL=https://SEU-WORKER.workers.dev
 ```
 
 A implantação do Worker e a configuração do binding Workers AI são etapas separadas. Consulte `worker/README.md`. A URL pública da API só deve ser adicionada ao Pages depois do deploy do Worker.
+
+## Implantação Cloudflare
+- Site: https://ai-center-9fh.pages.dev
+- API: https://ai-center-api.likasousa2024.workers.dev/api/chat
+- O projeto Pages está conectado ao GitHub e usa `npm run build` com saída `dist`.
+- A variável de build `VITE_API_URL` já aponta para a API.
+- O primeiro deploy do site ainda precisa concluir.
 
 ## Estado atual
 - Interface responsiva e navegação: implementadas.
