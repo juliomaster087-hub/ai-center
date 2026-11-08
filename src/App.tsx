@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import {
   Activity, ArrowDown, ArrowRight, Atom, BookOpen, Bot, Check, ChevronDown,
   Code2, Command, FileText, Globe2, Image, Languages, LayoutDashboard,
-  Menu, MessageCircle, Moon, PanelLeftClose, Plus, Search, Send, Settings2,
+  Menu, MessageCircle, Moon, Search, Send, Settings2,
   ShieldCheck, Sparkles, Stars, WandSparkles, X, Zap
 } from "lucide-react";
 
@@ -27,7 +27,7 @@ export default function App() {
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
-  const [apiUrl, setApiUrl] = useState(import.meta.env.VITE_API_URL || "");
+  const [apiUrl] = useState(import.meta.env.VITE_API_URL || "");
 
   const filteredTools = useMemo(() => tools.filter(t =>
     (category === "Todas" || t.category === category) &&
@@ -81,7 +81,7 @@ export default function App() {
       <aside className={`sidebar ${mobileOpen ? "sidebar-open" : ""}`}>
         <div className="brand"><div className="brand-mark"><Atom size={21}/></div><span>AI <b>Center</b><small>INTELLIGENCE HUB</small></span><button className="icon-btn sidebar-close" onClick={() => setMobileOpen(false)} aria-label="Fechar menu"><X size={18}/></button></div>
         <div className="workspace-label">WORKSPACE</div>
-        <nav>{nav.map(item => <button key={item.label} className={`nav-item ${active === item.label ? "active" : ""}`} onClick={() => { setActive(item.label); setSelectedTool(null); setMobileOpen(false); }}><item.icon size={18}/>{item.label}{item.label === "Ferramentas" && <span className="nav-count">06</span>}</button>)}</nav>
+        <nav>{nav.map(item => <button key={item.label} className={`nav-item ${active === item.label ? "active" : ""}`} onClick={() => { if (item.label === "Assistente") { openTool(tools.find(t => t.id === "chat")!); } else { setActive(item.label); setSelectedTool(null); } setMobileOpen(false); }}><item.icon size={18}/>{item.label}{item.label === "Ferramentas" && <span className="nav-count">06</span>}</button>)}</nav>
         <div className="sidebar-divider"/>
         <div className="workspace-label">FERRAMENTAS</div>
         {tools.slice(0, 4).map(tool => <button className="mini-tool" key={tool.id} onClick={() => openTool(tool)}><tool.icon size={16}/>{tool.title}</button>)}
