@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "ai-center-api",
+  "main": "index.js",
+  "compatibility_date": "2026-11-08",
+  "workers_dev": true,
+  "ai": {
+    "binding": "AI"
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.1
+    }
+  }
+}
