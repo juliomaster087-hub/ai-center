@@ -7,6 +7,12 @@ Plataforma pública de ferramentas de inteligência artificial. Projeto em desen
 - Cloudflare Workers AI (backend planejado)
 - Cloudflare Pages (hospedagem planejada)
 
+## Publicar o site (Cloudflare Pages)
+1. No painel Cloudflare, abra **Workers & Pages** e crie um projeto Pages conectado ao repositório GitHub.
+2. Configure o comando de build como `npm run build` e o diretório de saída como `dist`.
+3. Nas variáveis de ambiente de build, configure `VITE_API_URL` com a URL pública do Worker (depois que ele estiver implantado).
+4. Salve e aguarde o primeiro deploy.
+
 ## Rodar localmente
 ```bash
 npm install
@@ -27,7 +33,7 @@ Crie um arquivo `.env.local` (não envie segredos ao GitHub):
 VITE_API_URL=https://SEU-WORKER.workers.dev
 ```
 
-A implantação do Worker e a configuração do binding Workers AI são etapas separadas. Consulte `worker/README.md`.
+A implantação do Worker e a configuração do binding Workers AI são etapas separadas. Consulte `worker/README.md`. A URL pública da API só deve ser adicionada ao Pages depois do deploy do Worker.
 
 ## Estado atual
 - Interface responsiva e navegação: implementadas.
