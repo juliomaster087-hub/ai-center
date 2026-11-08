@@ -58,7 +58,7 @@ export default function App() {
       const response = await fetch(apiUrl.replace(/\/$/, "") + "/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next.slice(-12) }),
+        body: JSON.stringify({ tool: selectedTool?.id || "chat", messages: next.slice(-12) }),
       });
       if (!response.ok) throw new Error("O serviço não conseguiu responder. Tente novamente em instantes.");
       const data = await response.json();
